@@ -1,0 +1,44 @@
+#include "cpputils/graphics/image.h"
+
+using graphics::Image;
+
+int main() {
+    Image img;
+
+    img.Load("dog.png");
+    int borderSize = 10;
+    int width = img.GetWidth();
+    int height = img.GetHeight();
+
+    
+    for (int y = 0; y < borderSize; ++y) {
+        for (int x = 0; x < width; ++x) {
+            img.SetRed(x, y, 0);
+            img.SetGreen(x, y, 0);
+            img.SetBlue(x, y, 0);
+        }
+    }
+    for (int y = height - borderSize; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            img.SetRed(x, y, 0);
+            img.SetGreen(x, y, 0);
+            img.SetBlue(x, y, 0);
+        }
+    }   
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < borderSize; ++x) {
+            img.SetRed(x, y, 0);
+            img.SetGreen(x, y, 0);
+            img.SetBlue(x, y, 0);
+        }
+    }   
+    for (int y = 0; y < height; ++y) {
+        for (int x = width - borderSize; x < width; ++x) {
+            img.SetRed(x, y, 0);
+            img.SetGreen(x, y, 0);
+            img.SetBlue(x, y, 0);
+        }
+    }
+    img.SaveImageBmp("dog_border.bmp");
+    return 0;
+}
